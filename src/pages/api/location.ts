@@ -12,7 +12,7 @@ export default async function handler (
   else res.status(405).json('허용되지 않은 요청 유형입니다.')
 }
 
-// const SCHOOL_IP = process.env.SCHOOL_IP ?? ''
+const SCHOOL_IP = process.env.SCHOOL_IP ?? ''
 async function getHandler (req: NextApiRequest, res: NextApiResponse): Promise<void> {
   const ip = req.headers['x-real-ip'] ?? req.socket.remoteAddress
   if (ip === undefined) {
@@ -20,10 +20,10 @@ async function getHandler (req: NextApiRequest, res: NextApiResponse): Promise<v
     return
   }
 
-  // if (ip !== SCHOOL_IP) {
-  //   res.status(400).json({ success: false, message: '허용되지않은 아이피입니다.' })
-  //   return
-  // }
+  if (ip !== SCHOOL_IP) {
+    res.status(400).json({ success: false, message: '허용되지않은 아이피입니다.' })
+    return
+  }
 
   const { grade, class: classInfo } = req.query
   if (grade === undefined || classInfo === undefined) {
