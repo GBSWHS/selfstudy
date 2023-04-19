@@ -40,7 +40,7 @@ export default function View (): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={inter.className + ' flex h-screen bg-gray-200'}>
-        <div className="m-auto w-5/12">
+        <div className="m-auto w-5/12 min-w-fit">
           <div className='shadow-2xl p-10 rounded-lg bg-white flex flex-col'>
             <Image alt='로고' width={50} height={50} src='/logo.png' className='' />
             <h1 className='font-bold text-xl'>야간자율학습 위치 조회</h1>
